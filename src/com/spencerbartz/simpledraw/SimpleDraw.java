@@ -1,3 +1,5 @@
+/* Driver Class for the whole app */
+
 package com.spencerbartz.simpledraw;
 
 import javax.swing.UIManager;
@@ -9,7 +11,8 @@ public class SimpleDraw
 	{
 		try 
 		{
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} 
 		catch(UnsupportedLookAndFeelException e) 
 		{
@@ -28,7 +31,13 @@ public class SimpleDraw
 			e.printStackTrace();
 		}
 		
-		//Start the GUI
-		new SimpleDrawUI();
+    javax.swing.SwingUtilities.invokeLater(new Runnable() 
+    {
+      public void run() 
+      {
+    		//Main Entry point to the app
+    		new SimpleDrawUI();
+      }
+    });
 	}
 }
